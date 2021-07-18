@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<html>
+<body>
+    <script language="javascript">
+        // Hàm tính kết quả
+        function tinh() {
+            //var = parseInt(document..Field_Name(Input).value);
+            let a = document.getElementById("a").value;
+            let b = document.getElementById("b").value;
+            let c = document.getElementById("c").value;
+            var result = document.getElementById("result");
+
+
+            //if (!NaN(a) && !NaN(b) && !NaN(c)) {
+            if ((a + b > c) ||
+                (a + c > b) ||
+                (b + c > a)) {
+                result.value = "Đây là tam giác !";
+            }
+            if ((a == b) || (b == c) || (c == a)) {
+                result.value = "Đây là tam giác cân !";
+            } else if ((a == b) && (b == c) && (c == a)) {
+                result.value = "Đây là tam giác đều !";
+            } else if ((a * a == b * b + c * c) || (b * b == a * a + c * c) || (c * c == b * b + a * a)) {
+                result.value = "Đây là tam giác vuông !";
+            }
+            else {
+                result.value = "Đây không phải tam giác";
+            }
+            //}
+            //result.value = parseInt(a);
+        }
+    </script>
+    <br />
+    <form action="Triangle" method="get">
+        a: <input type="number" name="a" id="a" value="" onkeyup="tinh()" />
+        <br />
+        b: <input type="number" name="b" id="b" value="" onkeyup="tinh()" />
+        <br />
+        c: <input type="number" name="c" id="c" value="" onkeyup="tinh()" />
+        <br />
+        Kết quả: <input type="text" id="result" value="" />
+        <input type="submit" />
+        @ViewBag.Alert
+    </form>
+</body>
+</html>
